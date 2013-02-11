@@ -195,6 +195,7 @@ def setup(app_name=None):
     setup_assets(app_name=app_name)
     setup_virtualenv(app_name=app_name)
     setup_django(app_name=app_name)
+    setup_complete()
 
 
 def setup_assets(app_name=None):
