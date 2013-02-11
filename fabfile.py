@@ -258,4 +258,7 @@ def setup_clean_all():
 
 
 # import your local settings, which should define the ALLCAPS variables above.
-from fabconfig import *
+try:
+    from fabconfig import *
+except ImportError:
+    print("No local configuration exists.")
