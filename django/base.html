@@ -1,0 +1,94 @@
+{% load dajaxice_templatetags %}{% load compressed %}<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="{% block description %}TODO: Description{% endblock %}" />
+	<meta name="author" content="{% block author %}Far Dog LLC{% endblock %}" />
+	<meta name="keywords" content="APP_TEMPLATE_NAME, magic, TODO: Keywords {% block keywords %}{% endblock %}" />
+	<meta name="copyright" content="Far Dog LLC, Copyright (c) 2013." />
+
+	<title>{% block title %}{% if title %} {{ title }} | {% endif %}APP_TEMPLATE_NAME{% endblock %}</title>
+	<!-- Google Web Fonts -->
+	<link href='//fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css' />
+	<!-- stylesheets -->
+	{% compressed_css 'APP_TEMPLATE_NAME_global_css' %}
+	{% block additional_stylesheets %} {% endblock %}
+
+	{% compressed_js 'modernizr_js' %}
+	<script>
+		var _gaq=[['_setAccount','UA-36126014-2'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}favicons/apple-touch-icon-144x144-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}favicons/apple-touch-icon-114x114-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}favicons/apple-touch-icon-72x72-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}favicons/apple-touch-icon-precomposed.png" />
+	<link rel="icon" href="{{ STATIC_URL }}favicons/favicon.ico" type="image/x-icon" />
+	<link type="text/plain" rel="author" href="{{ STATIC_URL }}humans.txt" />
+</head>
+<body>
+
+<nav class="top-bar">
+	<ul>
+		<li class="name"><h1><a href="/">APP_TEMPLATE_NAME</a></h1></li>
+		<li class="toggle-topbar"><a href="#"></a></li>
+	</ul>
+	<section>
+		<ul class="left">
+			<li class="divider"></li>
+			<li class="has-dropdown">
+				<a href="#">Text</a>
+				<ul class="dropdown">
+					<li><a href="/text/convert/">Convert</a></li>
+				</ul>
+			</li>
+			<li class="divider"></li>
+		</ul>
+	</section>
+</nav>
+
+	
+	{% if alert.message %}
+	<div class="alert{% if alert.type %} alert-{{ alert.type }}{% endif %}">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		{{ alert.message }}
+	</div>
+	{% endif %}
+	
+	{% block content %}{% endblock %}
+	
+<footer>
+	<hr/>
+	<div class="row">
+		<div class="three columns">
+			<p>{% now "Y" %} <a href="http://fardogllc.com/" target="_blank">Far Dog LLC</a></p>
+		</div>
+		<!-- <div class="four columns">
+			<ul class="inline-list right">
+				<li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
+				<li><a href="/help/">Help</a></li>
+			</ul>
+		</div> -->
+	</div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{ STATIC_URL }}javascripts/foundation/jquery.js"><\/script>')</script>
+<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+{% compressed_js 'APP_TEMPLATE_NAME_global_js' %}
+{% dajaxice_js_import %}
+
+{% block additional_scripts %} {% endblock %}
+<script type="text/javascript">
+	window.static_base = "{{ STATIC_URL }}";
+</script>
+</body>
+</html>

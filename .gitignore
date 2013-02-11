@@ -33,3 +33,11 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Misc settings, caches, venv
+cache
+settings_*.py
+fabconfig.py
+venv
+assets/.sass-cache
+static

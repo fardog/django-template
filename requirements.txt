@@ -1,0 +1,8 @@
+Django
+argparse
+distribute
+django-dajaxice
+django-extensions
+django-pipeline
+requests
+wsgiref
