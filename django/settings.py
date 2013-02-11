@@ -81,9 +81,9 @@ STATICFILES_FINDERS = (
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 PIPELINE_CSS = {
-    'APP_TEMPLATE_NAME_css': {
+    'APP_TEMPLATE_NAME_global_css': {
         'source_filenames': (
-            'stylesheets/app.css'
+            'stylesheets/app.css',
         ),
         'output_filename': 'stylesheets/APP_TEMPLATE_NAME.min.css',
     },
